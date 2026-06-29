@@ -61,6 +61,12 @@ export default function Crisis() {
     // Set initial background
     if (bg) bg.style.backgroundImage = `url('${steps[0].bg}')`;
 
+    // Preload all images
+    steps.forEach(step => {
+      const img = new Image();
+      img.src = step.bg;
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
