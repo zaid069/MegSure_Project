@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import  heroVideo from "./assets/Hero_Video.mp4";
 import "./Hero.css";
 
 const slides = [
@@ -125,7 +126,7 @@ export default function Hero() {
         <video
           ref={videoRef}
           className="hero-video"
-          src="./src/assets/Hero_Video.mp4"
+          src={heroVideo}
           muted
           playsInline
           preload="auto"
