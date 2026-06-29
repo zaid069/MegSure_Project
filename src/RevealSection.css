@@ -1,0 +1,6 @@
+.rs-content {
+  position: relative;
+  z-index: 10;
+  background: #f5f0eb;
+  overflow: visible;
+}

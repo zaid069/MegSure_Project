@@ -1,0 +1,240 @@
+/* ── PAGE 1: Title ── */
+.crisis-title-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10vh 6vw;
+  background: #fffaf0;
+  color: #07100d;
+}
+
+.crisis-title-inner {
+  max-width: 920px;
+}
+
+.crisis-eyebrow {
+  font-family: 'Space Mono', monospace, Arial, sans-serif;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #987022;
+  font-size: 12px;
+  margin: 0 0 18px 0;
+}
+
+.crisis-title {
+  font-family: Georgia, 'Libre Baskerville', serif;
+  font-size: clamp(38px, 7vw, 88px);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  margin: 0 0 28px 0;
+  color: #000;
+}
+
+.crisis-subtitle {
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.65;
+  color: #39433f;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+/* ── SCROLLY SECTION ── */
+.crisis-scrolly {
+  position: relative;
+  background: #000;
+}
+
+.crisis-scrolly-bg {
+  position: sticky;
+  top: 0;
+  height: 110vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.crisis-bg-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  transition: background-image 0.5s ease, transform 1.2s ease, filter 0.65s ease;
+  filter: brightness(0.62) contrast(1.06) saturate(0.9);
+  transform: scale(1.04);
+}
+
+.crisis-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.18) 48%, rgba(0, 0, 0, 0.68)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent 50%, rgba(0, 0, 0, 0.35));
+}
+
+.crisis-steps {
+  position: relative;
+  z-index: 5;
+  margin-top: -100vh;
+}
+
+.crisis-step {
+  min-height: 160vh;
+  display: flex;
+  align-items: center;
+  padding: 10vh 7vw;
+  justify-content: flex-start;
+}
+
+.crisis-step-right {
+  justify-content: flex-end;
+}
+
+/* ── CARDS ── */
+.crisis-card {
+  width: min(500px, 88vw);
+  padding: 34px 34px 30px;
+  border-radius: 5px;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.45);
+  opacity: 0.16;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  backdrop-filter: blur(14px);
+}
+
+.crisis-step.active .crisis-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.crisis-card-light {
+  background: rgba(255, 250, 240, 0.92);
+  color: #000;
+}
+
+.crisis-card-dark {
+  background: rgba(5, 13, 10, 0.82);
+  color: #f7f1e4;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Card internals */
+.crisis-card-number {
+  font-family: monospace, Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: #00d4c7;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+}
+
+.crisis-card-title {
+  font-family: Georgia, serif;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin: 0 0 16px 0;
+}
+
+.crisis-card-light .crisis-card-title {
+  color: #07100d;
+}
+
+.crisis-card-dark .crisis-card-title {
+  color: #f7f1e4;
+}
+
+.crisis-card-body {
+  font-size: 16px;
+  line-height: 1.72;
+  margin: 0;
+}
+
+.crisis-card-light .crisis-card-body {
+  color: #34423d;
+}
+
+.crisis-card-dark .crisis-card-body {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+/* Metric */
+.crisis-metric {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  margin: 22px 0 8px;
+}
+
+.crisis-metric-num {
+  font-family: Georgia, serif;
+  font-size: 50px;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: #e15d43;
+  font-weight: 700;
+}
+
+.crisis-metric-label {
+  font-family: monospace, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6d6a60;
+}
+
+.crisis-card-dark .crisis-metric-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Pills */
+.crisis-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.crisis-pill {
+  font-family: monospace, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding: 8px 11px;
+  border-radius: 999px;
+}
+
+.crisis-card-light .crisis-pill {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #07100d;
+}
+
+.crisis-card-dark .crisis-pill {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── INTERLUDE ── */
+.crisis-interlude {
+  min-height: 40vh;
+  background: #07120e;
+  color: #f7f1e4;
+  display: grid;
+  place-items: center;
+  padding: 6vh 7vw;
+  text-align: center;
+}
+
+.crisis-quote {
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 4.5vw, 72px);
+  line-height: 1.16;
+  letter-spacing: -0.05em;
+  max-width: 1050px;
+  margin: 0;
+}
+
+.crisis-quote em {
+  color: #00d4c7;
+  font-style: italic;
+}

@@ -1,0 +1,134 @@
+/* ── Hero wrapper: tall enough to give scroll room ── */
+.hero-wrapper {
+  height: 1800vh;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* ── Sticky container that pins while scrolling ── */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ── Full-bleed video ── */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Dark overlay on top of video ── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.98) 0%,
+      rgba(0, 0, 0, 0.75) 25%,
+      rgba(0, 0, 0, 0) 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Text block ── */
+.hero-text {
+  position: absolute;
+  bottom: 20vh;
+  left: 7vw;
+  z-index: 2;
+  max-width: 640px;
+  animation: fadeSlide 0.45s ease both;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-text {
+  animation: fadeslide 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ── Eyebrow ── */
+.hero-eyebrow {
+  font-family: "Arial", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #40e0b0;
+  /* teal, matching your storymap */
+  text-transform: uppercase;
+  margin: 0 0 0.75rem 0;
+}
+
+/* ── Main title ── */
+.hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0 0 1.1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* ── Body copy ── */
+.hero-body {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .hero-text {
+    left: 5vw;
+    bottom: 14vh;
+    max-width: 90vw;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Crisis card that peeks from bottom */
+.hero-crisis-card {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 0;
+  border-radius: 28px 28px 0 0;
+  background: #fffaf0;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  overflow: visible;
+  transition: height 0.7s ease, opacity 0.12s ease, width 0.7s ease, border-radius 0.7s ease;
+
+}
