@@ -67,24 +67,23 @@ export default function Crisis() {
       img.src = step.bg;
     });
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-            const url = entry.target.dataset.bg;
-            if (bg && url) {
-              bg.style.backgroundImage = `url('${url}')`;
-              bg.style.transform = "scale(1.01)";
-              setTimeout(() => {
-                bg.style.transform = "scale(1.05)";
-              }, 500);
-            }
-          } else {
-            entry.target.classList.remove("active");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          const url = entry.target.dataset.bg;
+          if (bg && url) {
+            bg.style.backgroundImage = `url('${url}')`;
+            bg.style.transform = "scale(1.01)";
+            setTimeout(() => {
+              bg.style.transform = "scale(1.05)";
+            }, 500);
           }
-        });
-      },
+        } else {
+          entry.target.classList.remove("active");
+        }
+      });
+    },
       { threshold: 0.58 }
     );
 
@@ -113,7 +112,7 @@ export default function Crisis() {
       {/* SCROLLY SECTION — sticky bg + cards */}
       <div className="crisis-scrolly">
 
-        {/* Sticky background - SINGLE div, image changes */}
+        {/* Sticky background */}
         <div className="crisis-scrolly-bg">
           <div id="crisis-bg" className="crisis-bg-img" />
           <div className="crisis-bg-overlay" />

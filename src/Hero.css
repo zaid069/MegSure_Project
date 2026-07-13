@@ -1,4 +1,4 @@
-/* ── Hero wrapper: tall enough to give scroll room ── */
+/* ── Hero wrapper ── */
 .hero-wrapper {
   height: 1800vh;
   position: relative;
@@ -7,7 +7,7 @@
   background: transparent;
 }
 
-/* ── Sticky container that pins while scrolling ── */
+/* ── Sticky container ── */
 .video-container {
   position: fixed;
   top: 0;

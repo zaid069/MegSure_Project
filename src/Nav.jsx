@@ -20,7 +20,6 @@ export default function Nav() {
     }
   };
 
-  // Highlight nav item based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => ({

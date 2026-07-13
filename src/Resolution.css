@@ -1,0 +1,215 @@
+/* PAGE 1 — Title */
+.resolution-title-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 10vh 6vw;
+    background: #fffaf0;
+    color: #07100d;
+}
+
+.resolution-title-inner {
+    max-width: 920px;
+}
+
+.resolution-eyebrow {
+    font-family: monospace, Arial, sans-serif;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #987022;
+    font-size: 12px;
+    margin: 0 0 18px 0;
+}
+
+.resolution-title {
+    font-family: Georgia, 'Libre Baskerville', serif;
+    font-size: clamp(38px, 7vw, 88px);
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+    margin: 0 0 28px 0;
+    color: #000;
+}
+
+.resolution-subtitle {
+    font-size: clamp(18px, 2vw, 25px);
+    line-height: 1.65;
+    color: #39433f;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* SCROLLY */
+.resolution-scrolly {
+    position: relative;
+    background: #000;
+}
+
+.resolution-scrolly-bg {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.resolution-bg-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    transition: background-image 0.8s ease, transform 1.8s ease, filter 1s ease;
+    filter: brightness(0.62) contrast(1.06) saturate(0.9);
+    transform: scale(1.04);
+}
+
+.resolution-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.18) 48%, rgba(0, 0, 0, 0.68)),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent 50%, rgba(0, 0, 0, 0.35));
+}
+
+/* STEPS */
+.resolution-steps {
+    position: relative;
+    z-index: 5;
+    margin-top: -100vh;
+}
+
+.resolution-step {
+    min-height: 160vh;
+    display: flex;
+    align-items: center;
+    padding: 12vh 7vw;
+    justify-content: flex-start;
+}
+
+.resolution-step-right {
+    justify-content: flex-end;
+}
+
+/* CARDS */
+.resolution-card {
+    width: min(500px, 88vw);
+    padding: 34px 34px 30px;
+    border-radius: 5px;
+    box-shadow: 0 24px 90px rgba(0, 0, 0, 0.45);
+    opacity: 0.16;
+    transform: translateY(40px) scale(0.97);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    backdrop-filter: blur(14px);
+}
+
+.resolution-step.active .resolution-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.resolution-card-light {
+    background: rgba(255, 250, 240, 0.92);
+    color: #07100d;
+}
+
+.resolution-card-dark {
+    background: rgba(5, 13, 10, 0.82);
+    color: #f7f1e4;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.resolution-card-number {
+    font-family: monospace, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: #00d4c7;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+}
+
+.resolution-card-title {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin: 0 0 16px 0;
+}
+
+.resolution-card-light .resolution-card-title {
+    color: #07100d;
+}
+
+.resolution-card-dark .resolution-card-title {
+    color: #f7f1e4;
+}
+
+.resolution-card-body {
+    font-size: 16px;
+    line-height: 1.72;
+    margin: 0;
+}
+
+.resolution-card-light .resolution-card-body {
+    color: #34423d;
+}
+
+.resolution-card-dark .resolution-card-body {
+    color: rgba(255, 255, 255, 0.76);
+}
+
+/* Metric */
+.resolution-metric {
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+    margin: 22px 0 8px;
+}
+
+.resolution-metric-num {
+    font-family: Georgia, serif;
+    font-size: 50px;
+    line-height: 0.8;
+    letter-spacing: -0.06em;
+    color: #e15d43;
+    font-weight: 700;
+}
+
+.resolution-metric-label {
+    font-family: monospace, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6d6a60;
+}
+
+.resolution-card-dark .resolution-metric-label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Pills */
+.resolution-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.resolution-pill {
+    font-family: monospace, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    padding: 8px 11px;
+    border-radius: 999px;
+}
+
+.resolution-card-light .resolution-pill {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: #07100d;
+}
+
+.resolution-card-dark .resolution-pill {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+}

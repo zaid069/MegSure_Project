@@ -13,7 +13,6 @@ body {
   margin: 0;
   background: #050807;
   overflow-x: hidden;
-  /* NO overflow: hidden, NO overflow-y: hidden */
 }
 
 #root {
