@@ -1,7 +1,7 @@
 import "./RevealSection.css";
 import Crisis from "./Crisis";
 import Resolution from "./Resolution";
-// import CNN from "./CNN";
+import CNN from "./CNN";
 // import DSSMap from "./DSSMap";
 
 export default function RevealSection() {
@@ -9,8 +9,8 @@ export default function RevealSection() {
     <div className="rs-content" id="crisis">
       <Crisis />
       <section id="resolution"><Resolution /></section>
-      {/* <section id="cnn"><CNN /></section>
-      <section id="dss-map"><DSSMap /></section> */}
+      <section id="cnn"><CNN /></section>
+      {/* <section id="dss-map"><DSSMap /></section> */}
     </div>
   );
 }
