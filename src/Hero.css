@@ -24,6 +24,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  image-rendering: high-quality;
+  filter: contrast(1.05) saturate(1.1);
 }
 
 /* ── Dark overlay on top of video ── */
@@ -58,10 +60,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.hero-text {
-  animation: fadeslide 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 /* ── Eyebrow ── */
@@ -113,22 +111,4 @@
   .hero-title {
     font-size: 2.2rem;
   }
-}
-
-/* Crisis card that peeks from bottom */
-.hero-crisis-card {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  height: 0;
-  border-radius: 28px 28px 0 0;
-  background: #fffaf0;
-  z-index: 10;
-  opacity: 0;
-  pointer-events: none;
-  overflow: visible;
-  transition: height 0.7s ease, opacity 0.12s ease, width 0.7s ease, border-radius 0.7s ease;
-
 }

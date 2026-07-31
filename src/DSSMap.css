@@ -1,0 +1,282 @@
+/* ── SECTION ── */
+.dss-section {
+    background: #050d0a;
+    min-height: 100vh;
+    padding: 8vh 7vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.dss-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 212, 199, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 199, 0.09) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+}
+
+.dss-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* ── TITLE ── */
+.dss-head {
+    max-width: 780px;
+}
+
+.dss-eyebrow {
+    font-family: monospace, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #00d4c7;
+    margin: 0 0 18px 0;
+}
+
+.dss-title {
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: #f7f1e4;
+    margin: 0 0 18px 0;
+}
+
+.dss-highlight {
+    color: #00d4c7;
+    font-style: italic;
+}
+
+.dss-sub {
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+/* ── TWO CARDS ── */
+.dss-cards {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 1.5rem;
+    align-items: stretch;
+    /* both cards same height */
+}
+
+/* ── INFO CARD ── */
+.dss-info-card {
+    background: rgba(0, 212, 199, 0.04);
+    border: 1px solid rgba(0, 212, 199, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow:
+        0 0 20px rgba(0, 212, 199, 0.08),
+        inset 0 0 30px rgba(0, 212, 199, 0.03);
+}
+
+.dss-card-eyebrow {
+    font-family: monospace, Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #00d4c7;
+    margin: 0 0 12px 0;
+}
+
+.dss-card-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+}
+
+.dss-divider {
+    /* height: 1px; */
+    /* background: rgba(0, 212, 199, 0.12); */
+    margin: 1.4rem 0;
+    flex-shrink: 0;
+}
+
+/* Legend */
+.dss-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.dss-legend-item {
+    font-family: monospace, Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 99px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.dss-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Dashboard button */
+.dss-dashboard-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 212, 199, 0.12);
+    border: 1px solid rgba(0, 212, 199, 0.6);
+    box-shadow:
+        0 0 12px rgba(0, 212, 199, 0.2),
+        0 0 60px rgba(1, 216, 202, 0.2),
+        inset 0 0 15px rgba(0, 212, 199, 0.08);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: #00d4c7;
+    font-family: monospace, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+}
+
+.dss-dashboard-btn:hover {
+    background: rgba(0, 212, 199, 0.22);
+    box-shadow:
+        0 0 25px rgba(0, 212, 199, 0.45),
+        0 0 50px rgba(0, 212, 199, 0.2),
+        inset 0 0 15px rgba(0, 212, 199, 0.08);
+}
+
+.dss-btn-arrow {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.dss-dashboard-btn:hover .dss-btn-arrow {
+    transform: translateX(4px);
+}
+
+/* ── MAP CARD ── */
+.dss-map-card {
+    background: rgba(0, 212, 199, 0.04);
+    border: 1px solid rgba(0, 212, 199, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 0 20px rgba(0, 212, 199, 0.08),
+        inset 0 0 30px rgba(0, 212, 199, 0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top bar */
+.dss-map-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(0, 212, 199, 0.06);
+    border-bottom: 1px solid rgba(0, 212, 199, 0.15);
+    flex-shrink: 0;
+}
+
+.dss-map-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: monospace, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dss-map-label-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00d4c7;
+    box-shadow: 0 0 8px #00d4c7;
+}
+
+.dss-zoom-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.dss-zoom-btn {
+    background: rgba(0, 212, 199, 0.1);
+    border: 1px solid rgba(0, 212, 199, 0.3);
+    color: #00d4c7;
+    font-size: 18px;
+    font-weight: 700;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    font-family: monospace;
+}
+
+.dss-zoom-btn:hover {
+    background: rgba(0, 212, 199, 0.22);
+    box-shadow: 0 0 10px rgba(0, 212, 199, 0.3);
+}
+
+/* Map fills remaining height */
+.dss-map-container {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    /* needed for flex to work */
+}
+
+/* Bottom note */
+.dss-map-note {
+    font-family: monospace, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    padding: 18px 16px;
+    margin: 0;
+    border-top: 1px solid rgba(0, 212, 199, 0.1);
+    background: rgba(0, 212, 199, 0.03);
+    flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .dss-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dss-map-container {
+        min-height: 350px;
+    }
+}

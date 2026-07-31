@@ -3,6 +3,7 @@ import Hero from "./Hero.jsx";
 import Logo from "./Logo.jsx";
 import Nav from "./Nav.jsx";
 import RevealSection from "./RevealSection.jsx";
+import Footer from "./Footer.jsx";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Logo />
       <Hero />
       <RevealSection />
+      <Footer />
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import  heroVideo from "./assets/Hero_Video.mp4";
+import heroVideo from "./assets/Hero_Video.mp4";
 import "./Hero.css";
 
 const slides = [
@@ -42,21 +42,22 @@ const slides = [
 export default function Hero() {
   const videoRef = useRef(null);
   const wrapperRef = useRef(null);
-  const cardRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
     const video = videoRef.current;
     const wrapper = wrapperRef.current;
-    const card = cardRef.current;
     let targetTime = 0;
+    let currentTime = 0;
     let rafId = null;
 
     const smoothUpdate = () => {
-      if (!video) return;
-      const diff = targetTime - video.currentTime;
-      if (Math.abs(diff) > 0.001) {
-        video.currentTime = targetTime;;
+      if (video && video.readyState >= 2) {
+        // Lerp — smooth interpolation
+        currentTime += (targetTime - currentTime) * 0.08;
+        if (Math.abs(targetTime - currentTime) > 0.001) {
+          video.currentTime = currentTime;
+        }
       }
       rafId = requestAnimationFrame(smoothUpdate);
     };
@@ -75,39 +76,16 @@ export default function Hero() {
         targetTime = p * video.duration;
       }
 
-      // Slide switching
       const boundaries = [0, 0.17, 0.33, 0.55, 0.78];
       const slideIndex = boundaries.reduce((acc, boundary, i) => {
         return p >= boundary ? i : acc;
       }, 0);
       setActiveSlide(slideIndex);
-
-      // When video ends (progress > 0.85), peek the crisis card from bottom
-      if (card) {
-        if (p >= 0.85) {
-          const cardProgress = Math.min((p - 0.85) / 0.09, 1);
-
-          const cardHeight = cardProgress * 55;
-          const cardWidth = 80 + (20 * cardProgress);
-          const radius = 32 * (1 - cardProgress);
-
-          card.style.height = cardHeight + "vh";
-          card.style.width = cardWidth + "%";
-          card.style.borderRadius = radius + "px " + radius + "px 0 0";
-          card.style.opacity = cardProgress;
-        } else {
-          card.style.height = "0";
-          card.style.opacity = "0";
-        }
-      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     rafId = requestAnimationFrame(smoothUpdate);
-
-    if (video) {
-      video.addEventListener("canplay", handleScroll);
-    }
+    if (video) video.addEventListener("canplay", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -121,7 +99,6 @@ export default function Hero() {
   return (
     <section id="home" ref={wrapperRef} className="hero-wrapper">
 
-      {/* Fixed video layer */}
       <div className="video-container">
         <video
           ref={videoRef}
@@ -132,10 +109,8 @@ export default function Hero() {
           preload="auto"
         />
 
-        {/* Dark overlay */}
         <div className="hero-overlay" />
 
-        {/* Slide text */}
         <div className="hero-text" key={activeSlide}>
           <p className="hero-eyebrow">{slide.eyebrow}</p>
           <h1 className="hero-title">
@@ -157,9 +132,6 @@ export default function Hero() {
           <p className="hero-body">{slide.body}</p>
         </div>
       </div>
-
-      {/* Crisis card peeks from bottom when video ends */}
-      <div className="hero-crisis-card" ref={cardRef} />
 
     </section>
   );

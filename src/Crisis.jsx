@@ -55,46 +55,92 @@ const steps = [
 
 export default function Crisis() {
   useEffect(() => {
-    const bg = document.getElementById("crisis-bg");
+    const bg1 = document.getElementById("crisis-bg-1");
+    const bg2 = document.getElementById("crisis-bg-2");
     const stepEls = document.querySelectorAll(".crisis-step");
-
-    // Set initial background
-    if (bg) bg.style.backgroundImage = `url('${steps[0].bg}')`;
+    const titlePage = document.querySelector(".crisis-title-page");
+    let currentBg = 1;
 
     // Preload all images
-    steps.forEach(step => {
-      const img = new Image();
-      img.src = step.bg;
+    const preloadImage = (url) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve; // resolve even on error
+        img.src = url;
+      });
+    };
+
+    // Preload all images before setting initial bg
+    Promise.all(steps.map(step => preloadImage(step.bg))).then(() => {
+      if (bg1) { bg1.style.backgroundImage = `url('${steps[0].bg}')`; bg1.style.opacity = "1"; }
+      if (bg2) { bg2.style.backgroundImage = `url('${steps[1].bg}')`; bg2.style.opacity = "0"; }
     });
 
+    // Scroll-based title page card animation
+    const handleScroll = () => {
+      if (!titlePage) return;
+      const rect = titlePage.getBoundingClientRect();
+      const winH = window.innerHeight;
+
+      const progress = Math.max(0, Math.min((winH * 3 - rect.top) / (winH * 3), 1));
+      const eased = Math.pow(progress, 1);
+
+      const translateY = (1 - eased) * 120;
+      const radius = 75 * (1.1 - eased);
+      const scale = 0.45 + (0.55 * eased);
+      const width = 60 + (40 * eased);
+
+      titlePage.style.transform = `translateY(${translateY}vh) scale(${scale})`;
+      titlePage.style.borderRadius = `${radius}px ${radius}px 0 0`;
+      titlePage.style.width = `${width}vw`;
+      titlePage.style.marginLeft = `${(100 - width) / 2}%`;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    // Scrolly bg + card observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
           const url = entry.target.dataset.bg;
-          if (bg && url) {
-            bg.style.backgroundImage = `url('${url}')`;
-            bg.style.transform = "scale(1.01)";
-            setTimeout(() => {
-              bg.style.transform = "scale(1.05)";
-            }, 500);
+          if (url) {
+            const tempImg = new Image();
+            tempImg.onload = () => {
+              if (currentBg === 1) {
+                bg2.style.backgroundImage = `url('${url}')`;
+                bg2.style.opacity = "1";
+                bg1.style.opacity = "0";
+                currentBg = 2;
+              } else {
+                bg1.style.backgroundImage = `url('${url}')`;
+                bg1.style.opacity = "1";
+                bg2.style.opacity = "0";
+                currentBg = 1;
+              }
+            };
+            tempImg.src = url;
           }
         } else {
           entry.target.classList.remove("active");
         }
       });
-    },
-      { threshold: 0.58 }
-    );
+    }, { threshold: 0.3 });
 
     stepEls.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <div className="crisis" id="crisis">
 
-      {/* PAGE 1 — Title */}
+      {/* PAGE 1 — Title card rises from bottom */}
       <div className="crisis-title-page">
         <div className="crisis-title-inner">
           <p className="crisis-eyebrow">THE CRISIS</p>
@@ -109,16 +155,14 @@ export default function Crisis() {
         </div>
       </div>
 
-      {/* SCROLLY SECTION — sticky bg + cards */}
+      {/* SCROLLY SECTION */}
       <div className="crisis-scrolly">
-
-        {/* Sticky background */}
         <div className="crisis-scrolly-bg">
-          <div id="crisis-bg" className="crisis-bg-img" />
+          <div id="crisis-bg-1" className="crisis-bg-img" />
+          <div id="crisis-bg-2" className="crisis-bg-img" />
           <div className="crisis-bg-overlay" />
         </div>
 
-        {/* Steps */}
         <div className="crisis-steps">
           {steps.map((step) => (
             <article
@@ -150,7 +194,7 @@ export default function Crisis() {
         </div>
       </div>
 
-      {/* INTERLUDE — closing quote */}
+      {/* INTERLUDE */}
       <div className="crisis-interlude">
         <p className="crisis-quote">
           MegSure is not just a spring project. It is a plan to rebuild the{" "}
